@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:text="Weather" />
+        android:text="Campus Weather" />
 
     <Button
         android:id="@+id/button4"
@@ -42,25 +42,24 @@
         android:layout_alignLeft="@+id/button3"
         android:layout_alignRight="@+id/button3"
         android:layout_below="@+id/button3"
-        android:text="Mobile Webmail" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_below="@+id/button4"
-        android:text="Penn State Webmail" />
+        android:text="Mobile Webmail"
+        android:clickable="true"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:onClick="goToWebmail" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button5"
-        android:layout_alignRight="@+id/button5"
-        android:layout_below="@+id/button5"
-        android:text="Penn State Mobile Site" />
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignRight="@+id/button4"
+        android:layout_below="@+id/button4"
+        android:text="Penn State Mobile Site" 
+        android:clickable="true"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:onClick="goToPSU"/>
 
     <Button
         android:id="@+id/button7"
@@ -69,6 +68,10 @@
         android:layout_alignLeft="@+id/button6"
         android:layout_alignRight="@+id/button6"
         android:layout_below="@+id/button6"
-        android:text="Course Catalog" />
+        android:text="Course Catalog" 
+        android:clickable="true"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:onClick="goToCatalog" />
 
 </RelativeLayout>
