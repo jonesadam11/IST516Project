@@ -1,5 +1,8 @@
 package com.example.pennstatehub;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -9,10 +12,17 @@ import android.net.Uri;
 
 public class MainActivity extends Activity {
 
+	final int RQS_GooglePlayServices = 1;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        int resultCode=GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        if (!(resultCode==ConnectionResult.SUCCESS))
+        {
+        	GooglePlayServicesUtil.getErrorDialog(resultCode, this, RQS_GooglePlayServices);
+        }
     }
     
     public void goToWebmail(View view)
