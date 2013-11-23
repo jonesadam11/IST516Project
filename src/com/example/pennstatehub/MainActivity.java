@@ -25,6 +25,12 @@ public class MainActivity extends Activity {
         }
     }
     
+    public void goToMap(View view)
+    {
+    	Intent intent = new Intent (this, MapsActivity.class);
+    	startActivity(intent);
+    }
+    
     public void goToWebmail(View view)
     {
     	goToUrl("https://m.webmail.psu.edu/webmail/index.cgi");

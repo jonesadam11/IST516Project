@@ -15,7 +15,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Campus Map" />
+        android:text="Campus Map" 
+        android:onClick="goToMap"/>
 
     <Button
         android:id="@+id/button3"
