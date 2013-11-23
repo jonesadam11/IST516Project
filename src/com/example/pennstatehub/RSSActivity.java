@@ -193,19 +193,17 @@ public class RSSActivity extends FragmentActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_rs_dummy,
 					container, false);
-			TextView dummyTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
 			//dummyTextView.setText(Integer.toString(getArguments().getInt(
 			//		ARG_SECTION_NUMBER)));
 			switch(getArguments().getInt(ARG_SECTION_NUMBER)){
 			case 1:
-				dummyTextView.setText("http://news.psu.edu/rss/audience/students");
+				//dummyTextView.setText("http://news.psu.edu/rss/audience/students");
 				break;
 			case 2:
-				dummyTextView.setText("http://news.psu.edu/rss/topic/campus-life");
+				//dummyTextView.setText("http://news.psu.edu/rss/topic/campus-life");
 				break;
 			case 3:
-				dummyTextView.setText("http://news.psu.edu/rss/topic/athletics");
+				//dummyTextView.setText("http://news.psu.edu/rss/topic/athletics");
 				break;
 			}			
 			return rootView;
