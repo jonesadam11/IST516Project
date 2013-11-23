@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="Campus Map" 
-        android:onClick="goToMap"/>
+        android:onClick="goToMap" />
 
     <Button
         android:id="@+id/button3"
@@ -25,7 +25,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/button2"
-        android:text="News Feeds" />
+        android:text="News Feeds" 
+        android:onClick="goToNews" />
 
     <Button
         android:id="@+id/button2"
@@ -34,7 +35,8 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:text="Campus Weather" />
+        android:text="Campus Weather"
+        android:onClick="goToWeather" />
 
     <Button
         android:id="@+id/button4"

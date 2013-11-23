@@ -31,6 +31,18 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
+    public void goToNews(View view)
+    {
+    	Intent intent = new Intent (this, RSSActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void goToWeather(View view)
+    {
+    	Intent intent = new Intent (this, WeatherActivity.class);
+    	startActivity(intent);
+    }
+    
     public void goToWebmail(View view)
     {
     	goToUrl("https://m.webmail.psu.edu/webmail/index.cgi");

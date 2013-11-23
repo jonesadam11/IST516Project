@@ -74,9 +74,9 @@ public class MapsActivity extends Activity {
 		}
 		if (mMap != null) {
 			CameraPosition cameraPosition = new CameraPosition.Builder().target(
-	                startLocation).zoom(zoom).build();
-	 
+	                startLocation).zoom(zoom).build();	 
 			mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+			mMap.setMyLocationEnabled(true);
 		}
 	}
 
