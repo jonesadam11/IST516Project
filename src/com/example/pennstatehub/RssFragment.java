@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RssFragment extends Fragment implements OnItemClickListener {
@@ -32,6 +33,8 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 		if (view==null){
+			TextView label=(TextView)container.findViewById(R.id.textView1);
+			//String link=(String) label.getText();
 			view=inflater.inflate(R.layout.fragment_layout, container, false);
 			progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 			listView = (ListView) view.findViewById(R.id.listView);
@@ -46,8 +49,10 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	}
 	
 	private void startService() {
+		String link="http://news.psu.edu/rss/audience/students";
 		Intent intent = new Intent (getActivity(), RssService.class);
 		intent.putExtra(RssService.RECEIVER, resultReceiver);
+		intent.putExtra("rsslink", link);
 		getActivity().startService(intent);
 	}
 	

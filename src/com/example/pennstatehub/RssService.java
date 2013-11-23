@@ -15,7 +15,7 @@ import android.os.ResultReceiver;
 
 public class RssService extends IntentService {
 	
-	private static final String RSS_LINK = "http://www.pcworld.com/index.rss";
+	//public static final String RSS_LINK = "http://news.psu.edu/rss/audience/students";
 	public static final String ITEMS = "items";
 	public static final String RECEIVER = "receiver";
 	
@@ -25,10 +25,11 @@ public class RssService extends IntentService {
 	
 	@Override
 	protected void onHandleIntent(Intent intent) {
+		String link = intent.getExtras().getString("rsslink");
 		List<RssItem> rssItems = null;
 		try{
 			RssParser parser = new RssParser();
-			rssItems=parser.parse(getInputStream(RSS_LINK));
+			rssItems=parser.parse(getInputStream(link));
 		}
 		catch (XmlPullParserException e) {
         } 

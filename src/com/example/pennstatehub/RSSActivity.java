@@ -146,6 +146,7 @@ public class RSSActivity extends FragmentActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
+			
 			Fragment fragment = new DummySectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
@@ -193,17 +194,18 @@ public class RSSActivity extends FragmentActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_rs_dummy,
 					container, false);
+			TextView dummyTextView = (TextView)rootView.findViewById(R.id.textView1);
 			//dummyTextView.setText(Integer.toString(getArguments().getInt(
 			//		ARG_SECTION_NUMBER)));
 			switch(getArguments().getInt(ARG_SECTION_NUMBER)){
 			case 1:
-				//dummyTextView.setText("http://news.psu.edu/rss/audience/students");
+				dummyTextView.setText("http://news.psu.edu/rss/audience/students");
 				break;
 			case 2:
-				//dummyTextView.setText("http://news.psu.edu/rss/topic/campus-life");
+				dummyTextView.setText("http://news.psu.edu/rss/topic/campus-life");
 				break;
 			case 3:
-				//dummyTextView.setText("http://news.psu.edu/rss/topic/athletics");
+				dummyTextView.setText("http://news.psu.edu/rss/topic/athletics");
 				break;
 			}			
 			return rootView;
