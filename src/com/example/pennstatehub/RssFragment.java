@@ -4,7 +4,10 @@ import java.util.List;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +52,7 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	}
 	
 	private final ResultReceiver resultReceiver = new ResultReceiver(new Handler()) {
-		@SupressWarnings("unchecked")
+		@SuppressWarnings("unchecked")
 		@Override
 		protected void onReceiveResult(int resultCode, Bundle resultData) {
 			List<RssItem> items =(List<RssItem>)resultData.getSerializable(RssService.ITEMS);
@@ -68,7 +71,10 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		RssAdapter adapter = (RssAdapter)parent.getAdapter();
-		
+		RssItem item = (RssItem) adapter.getItem(position);
+		Uri uri=Uri.parse(item.getLink());
+		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		startActivity(intent);
 	}
 
 }
