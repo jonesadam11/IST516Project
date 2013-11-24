@@ -147,11 +147,27 @@ public class RSSActivity extends FragmentActivity implements
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
 			
-			Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-			fragment.setArguments(args);
-			return fragment;
+			switch(position){
+			case 0:
+				Fragment fragment1 = new RssFragment();
+				Bundle args1 = new Bundle();
+				args1.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/audience/students");
+				fragment1.setArguments(args1);
+				return fragment1;
+			case 1:
+				Fragment fragment2 = new RssFragment();
+				Bundle args2 = new Bundle();
+				args2.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/topic/campus-life");
+				fragment2.setArguments(args2);
+				return fragment2;
+			case 2:
+				Fragment fragment3 = new RssFragment();
+				Bundle args3 = new Bundle();
+				args3.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/topic/athletics");
+				fragment3.setArguments(args3);
+				return fragment3;
+			}
+			return null;			
 		}
 
 		@Override
@@ -174,42 +190,4 @@ public class RSSActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public DummySectionFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_rs_dummy,
-					container, false);
-			TextView dummyTextView = (TextView)rootView.findViewById(R.id.textView1);
-			//dummyTextView.setText(Integer.toString(getArguments().getInt(
-			//		ARG_SECTION_NUMBER)));
-			switch(getArguments().getInt(ARG_SECTION_NUMBER)){
-			case 1:
-				dummyTextView.setText("http://news.psu.edu/rss/audience/students");
-				break;
-			case 2:
-				dummyTextView.setText("http://news.psu.edu/rss/topic/campus-life");
-				break;
-			case 3:
-				dummyTextView.setText("http://news.psu.edu/rss/topic/athletics");
-				break;
-			}			
-			return rootView;
-		}
-	}
-
 }

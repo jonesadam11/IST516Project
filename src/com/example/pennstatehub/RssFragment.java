@@ -2,7 +2,7 @@ package com.example.pennstatehub;
 
 import java.util.List;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +24,8 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	private ListView listView;
 	private View view;
 	
+	public static final String RSS_LINK = "link";
+		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,8 +35,6 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 		if (view==null){
-			TextView label=(TextView)container.findViewById(R.id.textView1);
-			//String link=(String) label.getText();
 			view=inflater.inflate(R.layout.fragment_layout, container, false);
 			progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 			listView = (ListView) view.findViewById(R.id.listView);
@@ -49,7 +49,7 @@ public class RssFragment extends Fragment implements OnItemClickListener {
 	}
 	
 	private void startService() {
-		String link="http://news.psu.edu/rss/audience/students";
+		String link=getArguments().getString(RSS_LINK);
 		Intent intent = new Intent (getActivity(), RssService.class);
 		intent.putExtra(RssService.RECEIVER, resultReceiver);
 		intent.putExtra("rsslink", link);
