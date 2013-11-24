@@ -1,6 +1,7 @@
 //URL for UP current weather: http://api.openweathermap.org/data/2.5/weather?lat=40.80&lon=-77.86&mode=xml&units=imperial
 //URL for UP weather forecast for the next 5 days: http://api.openweathermap.org/data/2.5/forecast/daily?lat=40.80&lon=-77.86&cnt=5&mode=xml&units=imperial
 
+
 package com.example.pennstatehub;
 
 import android.os.Bundle;
