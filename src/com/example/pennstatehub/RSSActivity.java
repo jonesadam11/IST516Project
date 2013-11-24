@@ -9,7 +9,6 @@
 
 package com.example.pennstatehub;
 
-import java.util.Locale;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -20,13 +19,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class RSSActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -153,18 +148,21 @@ public class RSSActivity extends FragmentActivity implements
 				Bundle args1 = new Bundle();
 				args1.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/audience/students");
 				fragment1.setArguments(args1);
+				Log.w("debug", "Frag1");
 				return fragment1;
 			case 1:
 				Fragment fragment2 = new RssFragment();
 				Bundle args2 = new Bundle();
 				args2.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/topic/campus-life");
 				fragment2.setArguments(args2);
+				Log.w("debug", "Frag2");
 				return fragment2;
 			case 2:
 				Fragment fragment3 = new RssFragment();
 				Bundle args3 = new Bundle();
 				args3.putString(RssFragment.RSS_LINK, "http://news.psu.edu/rss/topic/athletics");
 				fragment3.setArguments(args3);
+				Log.w("debug", "Frag3");
 				return fragment3;
 			}
 			return null;			
@@ -178,7 +176,7 @@ public class RSSActivity extends FragmentActivity implements
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
+			//Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
 				return "STUDENTS";
