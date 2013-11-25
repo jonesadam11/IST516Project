@@ -1,9 +1,10 @@
 package com.example.pennstatehub;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -65,11 +66,70 @@ public class CurrentWeatherParser {
 				condDesc=readCondDesc(parser);
 				condIcon=readCondIcon(parser);
 			}
+			parser.next();
 		}
 		if (city != null && temp != null && hum != null && press != null && windSpeed != null && windDeg != null && condDesc != null && condIcon != null) {
 			data = new CurrentWeatherData(city, condIcon, condDesc, temp, press, hum, windSpeed, windDeg);
 		}
 		return data;
 	}
+	
+	private String readCity(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return parser.getAttributeValue(ns, "name");
+	}
+	
+	private String readTemperature(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return parser.getAttributeValue(ns, "value") + " F";
+	}
+	
+	private String readHumidity(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return parser.getAttributeValue(ns, "value") + parser.getAttributeValue(ns, "unit");
+	}
+	
+	private String readPressure(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return parser.getAttributeValue(ns, "value") + " " + parser.getAttributeValue(ns, "unit");
+	}
+	
+	private String readWindSpeed(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return  parser.getAttributeValue(ns, "name") + ": " + parser.getAttributeValue(ns, "value") + "mph";
+	}
+	
+	private String readWindDeg(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return  parser.getAttributeValue(ns, "name");
+	}
+	
+	private String readCondDesc(XmlPullParser parser) throws IOException, XmlPullParserException {
+		return  parser.getAttributeValue(ns, "value");
+	}
+	
+	private byte[] readCondIcon(XmlPullParser parser) throws IOException, XmlPullParserException {
+		String baseURL="http://openweathermap.org/img/w/";
+		String code=parser.getAttributeValue(ns, "icon");
+		HttpURLConnection con = null ;
+        InputStream is = null;
+        try {
+            con = (HttpURLConnection) (new URL(baseURL + code)).openConnection();
+            con.setRequestMethod("GET");
+            con.setDoInput(true);
+            con.setDoOutput(true);
+            con.connect();
+            // Let's read the response
+            is = con.getInputStream();
+            byte[] buffer = new byte[1024];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            while ( is.read(buffer) != -1)
+                baos.write(buffer);
+            return baos.toByteArray();
+        }
+        catch(Throwable t) {
+            t.printStackTrace();
+        }
+        finally {
+            try { is.close(); } catch(Throwable t) {}
+            try { con.disconnect(); } catch(Throwable t) {}
+        }
 
+        return null;
+
+	}
 }

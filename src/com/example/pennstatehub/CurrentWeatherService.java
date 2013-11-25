@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -34,7 +36,9 @@ public class CurrentWeatherService extends IntentService {
 		catch (IOException e) {
         }
 		Bundle bundle = new Bundle();
-		bundle.putSerializable(WEATHER_DATA, (Serializable)data);
+		List<CurrentWeatherData> weatherData=new ArrayList<CurrentWeatherData>();
+		weatherData.add(data);
+		bundle.putSerializable(WEATHER_DATA, (Serializable)weatherData);
 		ResultReceiver receiver = intent.getParcelableExtra(RECEIVER);
 		receiver.send(0, bundle);
 	}

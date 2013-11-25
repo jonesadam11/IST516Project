@@ -37,7 +37,7 @@ public class CurrentWeatherFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 		if (view==null){
 			view=inflater.inflate(R.layout.weather_layout, container, false);
-			progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+			progressBar = (ProgressBar) view.findViewById(R.id.weatherProgressBar);
 			cityText=(TextView)view.findViewById(R.id.cityText);
 			condIcon=(ImageView)view.findViewById(R.id.condIcon);
 			condDescr=(TextView)view.findViewById(R.id.condDescr);
@@ -65,8 +65,11 @@ public class CurrentWeatherFragment extends Fragment {
 		@SuppressWarnings("unchecked")
 		@Override
 		protected void onReceiveResult(int resultCode, Bundle resultData) {
-			CurrentWeatherData data=(CurrentWeatherData)resultData.getSerializable(CurrentWeatherService.WEATHER_DATA);
-			//List<RssItem> items =(List<RssItem>)resultData.getSerializable(RssService.ITEMS);
+			List<CurrentWeatherData> items =(List<CurrentWeatherData>)resultData.getSerializable(CurrentWeatherService.WEATHER_DATA);
+			//CurrentWeatherData data=(CurrentWeatherData)resultData.getSerializable(CurrentWeatherService.WEATHER_DATA);
+			CurrentWeatherData data = items.get(0);
+			//Currently NULL!!!
+			//
 			if(data != null) {
 				cityText.setText(data.getCity());
 				condIcon.setImageBitmap(BitmapFactory.decodeByteArray(data.getCondIcon(), 0, data.getCondIcon().length));
