@@ -30,6 +30,7 @@
         android:theme="@style/AppTheme" >
         
         <service android:name=".RssService" />
+        <service android:name=".CurrentWeatherService" />
         
         <activity
             android:name="com.example.pennstatehub.MainActivity"
