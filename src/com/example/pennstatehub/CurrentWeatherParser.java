@@ -3,9 +3,14 @@ package com.example.pennstatehub;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -29,7 +34,6 @@ public class CurrentWeatherParser {
 	}
 	
 	private CurrentWeatherData readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-		//parser.require(XmlPullParser.START_TAG, null, "rss");
 		String city=null;
 		byte[] condIcon=null;
 		String condDesc=null;
@@ -105,16 +109,16 @@ public class CurrentWeatherParser {
 	private byte[] readCondIcon(XmlPullParser parser) throws IOException, XmlPullParserException {
 		String baseURL="http://openweathermap.org/img/w/";
 		String code=parser.getAttributeValue(ns, "icon");
-		HttpURLConnection con = null ;
         InputStream is = null;
+        HttpGet httpReq = null;
         try {
-            con = (HttpURLConnection) (new URL(baseURL + code)).openConnection();
-            con.setRequestMethod("GET");
-            con.setDoInput(true);
-            con.setDoOutput(true);
-            con.connect();
-            // Let's read the response
-            is = con.getInputStream();
+        	URL url = new URL(baseURL+code+".png");
+        	httpReq=new HttpGet(url.toURI());
+        	HttpClient client=new DefaultHttpClient();
+        	HttpResponse resp=(HttpResponse)client.execute(httpReq);
+        	HttpEntity entity=resp.getEntity();
+        	BufferedHttpEntity buf=new BufferedHttpEntity(entity);
+        	is=buf.getContent();
             byte[] buffer = new byte[1024];
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             while ( is.read(buffer) != -1)
@@ -126,7 +130,6 @@ public class CurrentWeatherParser {
         }
         finally {
             try { is.close(); } catch(Throwable t) {}
-            try { con.disconnect(); } catch(Throwable t) {}
         }
 
         return null;
