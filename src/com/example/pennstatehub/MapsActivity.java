@@ -2,21 +2,25 @@ package com.example.pennstatehub;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 
 
-public class MapsActivity extends Activity {
+public class MapsActivity extends Activity implements OnInfoWindowClickListener {
 
 	private GoogleMap mMap;
 	
@@ -77,7 +81,44 @@ public class MapsActivity extends Activity {
 	                startLocation).zoom(zoom).build();	 
 			mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 			mMap.setMyLocationEnabled(true);
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.793744,-77.868130))
+				.title("IST Building")
+				.snippet("Get Walking Directions"));
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.798314,-77.861674))
+				.title("The HUB")
+				.snippet("Get Walking Directions"));
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.803514,-77.862465))
+				.title("The Creamery")
+				.snippet("Get Walking Directions"));
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.802275,-77.860883))
+				.title("Eisenhower Parking Garage")
+				.snippet("Get Walking Directions"));
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.802986,-77.860038))
+				.title("Student Health Center")
+				.snippet("Get Walking Directions"));
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(40.806991,-77.858598))
+				.title("Shields Building")
+				.snippet("Get Walking Directions"));
+			mMap.setOnInfoWindowClickListener(this);
 		}
 	}
+
+
+	@Override
+	public void onInfoWindowClick(Marker marker) {
+		// TODO Auto-generated method stub
+		String url = "http://maps.google.com/maps?daddr="+marker.getPosition().latitude+","+marker.getPosition().longitude+"&dirflg=w";
+		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+		intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+		startActivity(intent);
+	}
+	
+	
 
 }
