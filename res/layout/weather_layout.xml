@@ -39,46 +39,14 @@
         android:layout_marginLeft="12dp"
         android:layout_alignBaseline="@id/condDescr"
         android:layout_toRightOf="@id/condDescr"/>
-
-    <TextView
-        android:id="@+id/pressLab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/condDescr"
-        android:text="Pressure"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:id="@+id/press"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/pressLab"
-        android:layout_toRightOf="@id/pressLab"/>
-
-    <TextView
-        android:id="@+id/humLab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/pressLab"
-        android:text="Humidity" />
-
-    <TextView
-        android:id="@+id/hum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/humLab"
-        android:layout_toRightOf="@id/humLab"
-        android:layout_marginLeft="4dp"/>
-
-    <TextView
+    
+	<TextView
         android:id="@+id/windLab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/humLab"
-        android:text="Wind" />
+        android:layout_below="@id/condDescr"
+        android:text="Wind: " />
     
     <TextView
         android:id="@+id/windSpeed"
@@ -94,6 +62,128 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/windLab"
         android:layout_toRightOf="@id/windSpeed"
+        android:layout_marginLeft="4dp"/> 
+
+    <TextView
+        android:id="@+id/humLab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/windLab"
+        android:text="Humidity:" />
+
+    <TextView
+        android:id="@+id/hum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/humLab"
+        android:layout_toRightOf="@id/humLab"
+        android:layout_marginLeft="4dp"/>
+    
+     <TextView
+        android:id="@+id/pressLab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/humLab"
+        android:text="Pressure:"
+        />
+
+    <TextView
+        android:id="@+id/press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/pressLab"
+        android:layout_toRightOf="@id/pressLab"
+        android:layout_marginLeft="4dp"/>
+    
+    <TextView
+        android:id="@+id/forecastText"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" 
+        android:layout_below="@id/pressLab"
+        android:text="Forecast"/>
+    
+    <TextView
+        android:id="@+id/forecast1Lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecastText"
+        />
+
+    <TextView
+        android:id="@+id/forecast1Cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast1Lab"
+        android:layout_toRightOf="@id/forecast1Lab"
+        android:layout_marginLeft="4dp"/>
+    
+    <TextView
+        android:id="@+id/forecast2Lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecast1Lab"
+        />
+
+    <TextView
+        android:id="@+id/forecast2Cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast2Lab"
+        android:layout_toRightOf="@id/forecast2Lab"
+        android:layout_marginLeft="4dp"/>
+    
+    <TextView
+        android:id="@+id/forecast3Lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecast2Lab"
+        />
+
+    <TextView
+        android:id="@+id/forecast3Cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast3Lab"
+        android:layout_toRightOf="@id/forecast3Lab"
+        android:layout_marginLeft="4dp"/>
+    
+    <TextView
+        android:id="@+id/forecast4Lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecast3Lab"
+        />
+
+    <TextView
+        android:id="@+id/forecast4Cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast4Lab"
+        android:layout_toRightOf="@id/forecast4Lab"
+        android:layout_marginLeft="4dp"/>
+    
+    <TextView
+        android:id="@+id/forecast5Lab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecast4Lab"
+        />
+
+    <TextView
+        android:id="@+id/forecast5Cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast5Lab"
+        android:layout_toRightOf="@id/forecast5Lab"
         android:layout_marginLeft="4dp"/>
 
 </RelativeLayout>

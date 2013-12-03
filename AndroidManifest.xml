@@ -31,6 +31,7 @@
         
         <service android:name=".RssService" />
         <service android:name=".CurrentWeatherService" />
+        <service android:name=".ForecastService" />
         
         <activity
             android:name="com.example.pennstatehub.MainActivity"
