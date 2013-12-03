@@ -63,6 +63,28 @@ public class MainActivity extends Activity {
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
     }
+    
+    public void goToFacebook(View view)
+    {
+    	try{
+    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/146381745267"));
+    		startActivity(intent);
+    	}
+    	catch(Exception e){
+    		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/pennstate")));
+    	}
+    }
+    
+    public void goToTwitter(View view)
+    {
+    	try {
+    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=penn_state"));
+    		startActivity(intent);
+    	}
+    	catch (Exception e){
+    		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/penn_state"))); 
+    	} 
+    }
 
 
     @Override
